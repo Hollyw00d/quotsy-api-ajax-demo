@@ -8,19 +8,11 @@
     <script type="text/javascript">
         $(function() {
             $('#get_all_button').on('click', function(){
-                $.get('/quotes/index_json', function(result) {
-                    var htmlStr = '';
-                    for(var i = 0; i < result['quotes'].length; i++) {
+                $.get('/quotes/index_html', function(result) {
 
-                        htmlStr += '<div class="quote">';
-                        htmlStr += '<h1>' + result.quotes[i].author + '</h1>';
-                        htmlStr += '<p>' + result.quotes[i].quote + '</p>';
-                        htmlStr += '</div>';
-                    }
+                    $('#quotes').html(result);
 
-                    $('#quotes').html(htmlStr);
-
-                }, 'json');
+                });
 
             });
 
