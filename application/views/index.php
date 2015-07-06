@@ -7,10 +7,23 @@
 
     <script type="text/javascript">
         $(function() {
-            $('#get_all_button').on('click', function(){
-                $.get('/quotes/index_html', function(result) {
+            // Get an HTML string to dump into the
+            // #quotes DIV later
+            $.get('/quotes/index_html', function(result) {
 
-                    $('#quotes').html(result);
+                $('#quotes').html(result);
+
+            });
+
+
+            // Submit form, add new quote and author into DB,
+            // & add show new DB row without reloading page
+
+            // However form submits twice!!!
+            $('#add-quote').on('submit', function() {
+
+
+                $.post('/quotes/create', $(this).serialize(), function(result) {
 
                 });
 
@@ -24,6 +37,10 @@
 <body>
 
     <h1>Quotsy</h1>
+
+    <p>Test Image to Ensure Page Doesn't Reload:<br />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Soccerball1.png" alt="soccer ball test image"/>
+    </p>
 
     <form action="<?php echo base_url() . 'quotes/create'; ?>" method="post" id="add-quote">
         <p>
@@ -41,7 +58,6 @@
         </p>
     </form>
 
-    <p><button id="get_all_button">Show all Quotes</button></p>
 
     <div id="quotes">
 

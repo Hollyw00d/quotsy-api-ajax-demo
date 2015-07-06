@@ -1,5 +1,5 @@
 <?php
-foreach($quotes as $quote)
+foreach(array_reverse($quotes) as $quote)
 {
 ?>
 
