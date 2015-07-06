@@ -15,11 +15,8 @@
 
             });
 
-
             // Submit form, add new quote and author into DB,
             // & add show new DB row without reloading page
-
-            // However form submits twice!!!
             $('#add-quote').on('submit', function() {
 
 
@@ -28,6 +25,11 @@
                 });
 
             });
+
+            // Prevents double-form submission
+            // by removing all event handlers from
+            // form#add-quote after the form is submitted
+            $('#add-quote').off();
 
         });
 
