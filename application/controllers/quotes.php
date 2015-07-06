@@ -16,6 +16,15 @@ class Quotes extends CI_Controller {
         $this->load->view('partials/quotes', $data);
     }
 
+    public function create()
+    {
+        $this->load->model('Quote');
+
+        $new_quote = $this->input->post();
+        $this->Quote->create($new_quote);
+        redirect(base_url());
+    }
+
     public function index()
     {
         $this->load->view('index');
